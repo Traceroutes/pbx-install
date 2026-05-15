@@ -167,4 +167,4 @@ d-i finish-install/reboot_in_progress note
 openssh-server openssh-server/permit-root-login boolean false
 
 # Download firstboot script, make executable
-d-i preseed/late_command string in-target wget https://raw.githubusercontent.com/Traceroutes/pbx-install/refs/heads/firstboot/firstboot/firstboot -O /etc/init.d/firstboot; in-target chmod +x /etc/init.d/firstboot; in-target ln -s ../init.d/firstboot /etc/rc5.d/S99firstboot
+d-i preseed/late_command string in-target wget https://raw.githubusercontent.com/Traceroutes/pbx-install/refs/heads/main/firstboot/firstboot -O /etc/init.d/firstboot; in-target chmod +x /etc/init.d/firstboot; in-target ln -s ../init.d/firstboot /etc/rc5.d/S99firstboot
