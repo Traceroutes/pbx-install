@@ -28,4 +28,5 @@ if ! [ -f /etc/firstran ]; then
   date >> /etc/firstran
   install_meshagent
 else
-  
+  echo "Already Ran" >> /etc/firstran
+fi
