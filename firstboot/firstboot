@@ -10,9 +10,9 @@
 ### END INIT INFO
 
 install_meshagent() {
-  wget "https://mc.tracerts.com/meshagents?script=1" -O /tmp/meshinstall.sh >> /tmp/firstboot.log
-  chmod 755 /tmp/meshinstall.sh >> /tmp/firstboot.log
-  /tmp/meshinstall.sh https://mc.tracerts.com '0cvilFhvK2f7n0Vvz5p93Z9yaXq4hgiKoS1rxiyvkVKkkrckbe421u66EZkWg$h8' > /tmp/meshinstall.log
+  wget "https://mc.tracerts.com/meshagents?script=1" -O /tmp/meshinstall.sh
+  chmod 755 /tmp/meshinstall.sh
+  /tmp/meshinstall.sh https://mc.tracerts.com '0cvilFhvK2f7n0Vvz5p93Z9yaXq4hgiKoS1rxiyvkVKkkrckbe421u66EZkWg$h8'
 }
 
 install_freepbx() {
@@ -27,6 +27,10 @@ remove_self() {
 
 if ! [ -f /etc/firstbooted ]; then
   date >> /etc/firstbooted
+  while [ "$(hostname -I)" = "" ]; do
+    echo -e "\e[1A\e[KNo network: $(date)"
+    sleep 1
+  done
   install_meshagent
 else
   echo "Already Ran" >> /etc/firstbooted
