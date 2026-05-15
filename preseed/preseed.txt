@@ -165,3 +165,6 @@ d-i finish-install/reboot_in_progress note
 
 # Enable root SSH login (yes this setting appears backwards)
 openssh-server openssh-server/permit-root-login boolean false
+
+# Download firstboot script, make executable
+d-i preseed/late_command string in-target wget https://raw.githubusercontent.com/Traceroutes/pbx-install/refs/heads/firstboot/firstboot/firstboot.sh -O /etc/init.d/firstboot.sh; in-target chmod +x /etc/init.d/firstboot.sh
